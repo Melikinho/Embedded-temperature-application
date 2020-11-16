@@ -1,0 +1,3 @@
+#include <avr/interrupt.h> // Handling interrupts : HC05 works in interrupt mode 
+#include <avr/io.h> // includes the apropriate Input Output definitions
+#include <LiquidCrystal.h> // displaying the temperature values
