@@ -7,6 +7,35 @@ LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 
 char temp;
 
-void setup() {}
-void loop( {}
+void setup() {
+lcd.begin(16, 2);
+
+lcd.print("Jimmys Project");
+
+UBRR0 = 103; 
+UCSR0C |= (1 << UCSZ01) | (1 << UCSZ00); 
+UCSR0B |= (1 << RXEN0) | (1 << TXEN0) | (1 << RXCIE0);    
+sei();// enable global interrupt
+
+DDRC = 0b00000000;
+ADMUX = 0b01100000;
+ADCSRA = 0b10000111;}
+
+
+void loop( {
+int temperature;
+  switch(temp)  
+  {
+    case '0':
+    ADCSRA = ADCSRA | (1 << ADSC);
+   
+    
+    while(ADCSRA & (1 << ADSC)); 
+
+
+   temperature = ADCH * (5.0 / 1023.0 * 100.0);  
+   
+  lcd.setCursor(0,1);  
+
+}
 
