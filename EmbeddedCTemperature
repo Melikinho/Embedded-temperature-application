@@ -35,7 +35,37 @@ int temperature;
 
    temperature = ADCH * (5.0 / 1023.0 * 100.0);  
    
-  lcd.setCursor(0,1);  
+  lcd.setCursor(0,1);
+  
+      
+  lcd.print("temp : ");
+
+     temp = 11;
+    break;
+
+    case '1':
+    
+       ADCSRA = ADCSRA | (1 << ADSC);
+   
+    // Wait until the ADSC bit has been cleared
+    while(ADCSRA & (1 << ADSC));
+
+    // convert the voltage value to temperature
+
+   temperature = ADCH * (5.0 / 1023.0 * 100.0);
+
+  lcd.setCursor(7,1);
+  lcd.print(temperature);
+
+     temp = 11;
+    break;
+  }
+}
+
+ISR(USART_RX_vect)  
+{ 
+  temp=UDR0;
+}
 
 }
 
